@@ -91,7 +91,7 @@ fun homePage(
     }
     @Composable
     fun CustomTopBar(authViewModel: AuthViewModel) {
-        //TopAppBar(
+        TopAppBar(
             title = {
                 Text(
                     "Productivity",
