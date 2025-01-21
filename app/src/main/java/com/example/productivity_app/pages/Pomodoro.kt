@@ -12,10 +12,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.productivity_app.AuthViewModel
 
 @Composable
-fun PomodoroTimerPage(modifier: Modifier = Modifier , authViewModel: AuthViewModel) {
+fun PomodoroTimerPage(modifier: Modifier = Modifier ,navController: NavController, authViewModel: AuthViewModel) {
     var timeLeft by remember { mutableStateOf(25 * 60) } // 25 minutes in seconds
     var isRunning by remember { mutableStateOf(false) }
 
@@ -45,9 +46,13 @@ fun PomodoroTimerPage(modifier: Modifier = Modifier , authViewModel: AuthViewMod
         }
     }
 }
-@Preview
-    (showBackground = true)
+@Preview(showBackground = true)
 @Composable
-fun PomodoroTimerPagePreview()
-{ PomodoroTimerPage(modifier = Modifier, authViewModel = AuthViewModel())
+fun PomodoroTimerPagePreview() {
+    val navController = rememberNavController() // Define the NavController for the preview
+    PomodoroTimerPage(
+        modifier = Modifier,
+        navController = navController,
+        authViewModel = AuthViewModel() // Provide an instance of AuthViewModel
+    )
 }
